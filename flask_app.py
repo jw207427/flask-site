@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib import style
 import matplotlib as mpl
 import io
+import os
 import base64
 import json
 import requests
@@ -72,7 +73,9 @@ def graphs():
     if not brand:
         return 'Missing brand'
 
-    with open('input.json') as json_file:
+    this_folder = os.getcwd()
+
+    with open(this_folder+'/input.json') as json_file:
         data = json.load(json_file)
 
     headers = dict()
