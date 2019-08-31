@@ -85,6 +85,9 @@ def graphs():
     # endpoint = 'http://127.0.0.1:5000/solver/solve'
     endpoint = 'https://martini.mktg.run/solver/solve'
 
+    if brand.lower() not in data:
+        return 'Cannot find this brand'
+
     resp = requests.post(endpoint, headers=headers, json=data[brand.lower()])
 
     result = resp.json()['summary']
