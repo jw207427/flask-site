@@ -1,24 +1,34 @@
 from flask import Flask, render_template, request
 import matplotlib.pyplot as plt
 from matplotlib import style
+import matplotlib as mpl
 import io
 import base64
 import json
 import requests
 import pandas as pd
 import numpy as np
+import seaborn as sns
 from mpltools import layout
+import calendar
+
+mpl.rcParams['font.family'] = "Arial Rounded MT Bold"
+
+sns.set_context("paper", font_scale=1.25)
+# to change default color cycle
+# plt.rcParams['axes.prop_cycle'] = plt.cycler(color=plt.cm.magma.colors)
 
 style.use('dark_background')
 
 app = Flask(__name__)
 
 
-def make_pie(sizes, text, labels, ax):
+def make_pie(sizes, text, ax):
     ax.axis('equal')
     width = 0.35
+
     kwargs = dict(startangle=180, autopct='%1.1f%%')
-    outside, _, autotexts = ax.pie(sizes, radius=1.25, pctdistance=1 - 2 * width / 3,
+    outside, _, autotexts = ax.pie(sizes, colors=['red', 'silver'], radius=1.25, pctdistance=1 - 2 * width / 3,
                                    labels=None, **kwargs)
     for autotext in autotexts:
         autotext.set_color('white')
@@ -26,26 +36,23 @@ def make_pie(sizes, text, labels, ax):
     plt.setp(outside, width=width * 1.5, edgecolor='white')
 
     kwargs = dict(size=20, fontweight='bold', va='center')
-    ax.text(0, 0, text, ha='center', **kwargs, color='slategray')
+    ax.text(0, 0, text, ha='center', **kwargs, color='white')
 
 
 def make_bar(ind, data, width, title, labels, ax):
-    ax.bar(ind, data[0], width)
-    for j, v in enumerate(data[0]):
-        ax.text(j - .125, v - v / 2, str(int(round(v))), color='white', fontweight='bold')
-
-    bottom = data[0]
-    for i in range(1, len(data)):
-        ax.bar(ind, data[i], width, bottom=bottom)
-        if i < len(data) - 1:
-            bottom += data[i]
-
+    bottom = np.zeros(len(ind))
+    colors = ['red', 'gray']
+    for i in range(len(data)):
+        ax.bar(ind, data[i], width, bottom=bottom, align='center', color=colors[i])
         for j, v in enumerate(bottom.tolist()):
-            ax.text(j - .125, v + data[i][j] / 2, str(int(round(data[i][j]))), color='white', fontweight='bold')
+            ax.text(j, v + data[i][j] / 2, str(int(round(data[i][j]))), color='white', ha='center')
+        bottom += data[i]
 
+    title_kwargs = dict(size=20, va='bottom', fontweight='bold')
+    label_kwargs = dict(va='top', fontweight='bold', rotation='vertical')
     ax.set_xticks(ind, minor=False)
-    ax.set_xticklabels(labels)
-    ax.set_title(title)
+    ax.set_xticklabels(labels, **label_kwargs)
+    ax.set_title(title, **title_kwargs)
 
 
 def build_graph(x, y):
@@ -79,22 +86,29 @@ def graphs():
 
     result = resp.json()['summary']
 
-    calc_combs = ['brand-channel', 'channel-region', 'channel-month']
+    calc_combs = {'brand-channel':'Brand & Channel',
+                  'channel-region': 'Channel & Region',
+                  'channel-month': 'Channel & Month'}
+
     solve = ['total_reach', 'total_cost', 'total_event']
 
     graph_url = []
+    title = []
     for calc in calc_combs:
         print(calc)
         output = pd.DataFrame(result[calc])
 
+        if 'month' in list(output):
+            output['month'] = output['month'].apply(lambda x: calendar.month_name[x])
+
         if calc == 'brand-channel':
             labels = output['channel'].unique()
 
-            fig, ax = plt.subplots(1, 3, figsize=(10, 3), sharex='col')
+            fig, ax = plt.subplots(1, 3, figsize=(9, 3), sharex='col', dpi=120)
             x = 0
             for s in solve:
-                total = s + '\n' + f'{round(sum(output[s])):,}'
-                make_pie(output[s], total, labels, ax[x])
+                total = s + '\n' + f'{int(round(sum(output[s]))):,}'
+                make_pie(output[s], total, ax[x])
                 x += 1
 
             ax[0].legend(loc=2, labels=labels)
@@ -111,7 +125,10 @@ def graphs():
                     labels = output[i].unique()
                     merge_index = i
 
-            fig, ax = plt.subplots(3, 1, figsize=(10, 10), sharex='col')
+            if len(labels) > 5:
+                fig, ax = plt.subplots(3, 1, figsize=(9, 9), sharex='col', dpi=120)
+            else:
+                fig, ax = plt.subplots(1, 3, figsize=(9, 3), sharex='col', dpi=120)
 
             ind = np.arange(len(labels))
             width = .5
@@ -120,7 +137,7 @@ def graphs():
             for s in solve:
                 # on premise
                 on = output[output[legend_index] == legend[0]]
-                off = output[output[legend_index] == legend[0]]
+                off = output[output[legend_index] != legend[0]]
 
                 onoff = pd.merge(on, off, on=[merge_index], how='outer')
                 onoff.fillna(0, inplace=True)
@@ -130,16 +147,19 @@ def graphs():
 
             ax[0].legend(loc=2, labels=legend)
 
-        fig.suptitle(calc, fontsize=16)
+        # fig.suptitle(calc, fontsize=16)
         # Remove ticks on top and right sides of plot
         for a in ax.ravel():
             layout.cross_spines(ax=a)
+
+        plt.tight_layout()
 
         img = io.BytesIO()
 
         plt.savefig(img, format='png')
         img.seek(0)
         graph_url.append('data:image/png;base64,{}'.format(base64.b64encode(img.getvalue()).decode()))
+        title.append(calc_combs[calc])
         plt.close()
 
     #
@@ -158,6 +178,9 @@ def graphs():
     # graph3_url = build_graph(x3, y3)
 
     return render_template('graphs.html',
+                           title1=title[0],
+                           title2=title[1],
+                           title3=title[2],
                            graph1=graph_url[0],
                            graph2=graph_url[1],
                            graph3=graph_url[2])
