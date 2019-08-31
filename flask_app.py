@@ -121,7 +121,7 @@ def graphs():
             legend_index = index[0]
             merge_index = index[0]
             for i in index:
-                if len(output[i].unique()) == 2:
+                if len(output[i].unique()) <= 2:
                     legend = output[i].unique()
                     legend_index = i
                 else:
@@ -164,7 +164,6 @@ def graphs():
         graph_url.append('data:image/png;base64,{}'.format(base64.b64encode(img.getvalue()).decode()))
         title.append(calc_combs[calc])
         plt.close()
-
     #
     #
     #
@@ -187,6 +186,11 @@ def graphs():
                            graph1=graph_url[0],
                            graph2=graph_url[1],
                            graph3=graph_url[2])
+
+
+@app.route('/')
+def root():
+    return 'Test site'
 
 
 if __name__=='__main__':
