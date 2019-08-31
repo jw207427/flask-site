@@ -107,7 +107,7 @@ def graphs():
         if calc == 'brand-channel':
             labels = output['channel'].unique()
 
-            fig, ax = plt.subplots(1, 3, figsize=(9, 3), sharex='col', dpi=120)
+            fig, ax = plt.subplots(1, 3, figsize=(9, 3), sharex='col')
             x = 0
             for s in solve:
                 total = s + '\n' + f'{int(round(sum(output[s]))):,}'
@@ -129,9 +129,9 @@ def graphs():
                     merge_index = i
 
             if len(labels) > 5:
-                fig, ax = plt.subplots(3, 1, figsize=(9, 9), sharex='col', dpi=120)
+                fig, ax = plt.subplots(3, 1, figsize=(9, 9), sharex='col')
             else:
-                fig, ax = plt.subplots(1, 3, figsize=(9, 3), sharex='col', dpi=120)
+                fig, ax = plt.subplots(1, 3, figsize=(9, 3), sharex='col')
 
             ind = np.arange(len(labels))
             width = .5
