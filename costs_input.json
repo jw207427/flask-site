@@ -1,7 +1,7 @@
 {
     "baileys": {
         "brand": "Baileys",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -696,6 +696,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -712,11 +715,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 3738.0
+        "target": 1164388.99
     },
     "blade and bow": {
         "brand": "Blade And Bow",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -819,6 +822,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -835,11 +841,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 494.0
+        "target": 134639.28999999995
     },
     "buchanan's": {
         "brand": "Buchanan's",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -1398,6 +1404,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -1414,11 +1423,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 1200.0
+        "target": 676588.2700000005
     },
     "bulleit": {
         "brand": "Bulleit",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -2329,6 +2338,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -2345,11 +2357,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 2328.0
+        "target": 973119.2400000009
     },
     "captain morgan": {
         "brand": "Captain Morgan",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -3310,6 +3322,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -3326,11 +3341,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 6763.0
+        "target": 2495738.1100000013
     },
     "cascade blonde": {
         "brand": "Cascade Blonde",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -3621,6 +3636,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -3637,11 +3655,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 1061.0
+        "target": 352060.60000000027
     },
     "ciroc": {
         "brand": "Ciroc",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -4524,6 +4542,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -4540,11 +4561,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 4479.0
+        "target": 1835332.2099999983
     },
     "ciroc vs": {
         "brand": "Ciroc VS",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -4861,6 +4882,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -4877,11 +4901,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 1977.0
+        "target": 853371.0699999986
     },
     "crown royal": {
         "brand": "Crown Royal",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -6038,6 +6062,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -6054,11 +6081,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 7550.0
+        "target": 3524852.0299999933
     },
     "dbc multiple brands": {
         "brand": "DBC MULTIPLE BRANDS",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -6233,6 +6260,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -6249,11 +6279,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 716.0
+        "target": 363855.03
     },
     "don julio": {
         "brand": "Don Julio",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -7094,6 +7124,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -7110,11 +7143,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 2145.0
+        "target": 1043905.2099999981
     },
     "george dickel": {
         "brand": "George Dickel",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -7221,6 +7254,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -7237,11 +7273,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 426.0
+        "target": 115231.46999999997
     },
     "guinness": {
         "brand": "Guinness",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -8314,6 +8350,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -8330,11 +8369,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 3153.0
+        "target": 3362245.519999996
     },
     "i.w. harper": {
         "brand": "I.W. Harper",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -8397,6 +8436,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -8413,11 +8455,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 70.0
+        "target": 22911.079999999998
     },
     "johnnie walker": {
         "brand": "Johnnie Walker",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -9784,6 +9826,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -9800,11 +9845,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 3555.0
+        "target": 1886685.4999999993
     },
     "ketel one": {
         "brand": "Ketel One",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -11133,6 +11178,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -11149,11 +11197,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 5396.0
+        "target": 2222739.5600000024
     },
     "multiple brands": {
         "brand": "MULTIPLE BRANDS",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -12236,6 +12284,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -12252,11 +12303,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 9732.0
+        "target": 4201908.189999993
     },
     "roe & co": {
         "brand": "Roe & Co",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -12343,6 +12394,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -12359,11 +12413,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 281.0
+        "target": 140388.86000000007
     },
     "rumple minze": {
         "brand": "Rumple Minze",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -12478,6 +12532,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -12494,11 +12551,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 274.0
+        "target": 127528.59999999999
     },
     "seagram's": {
         "brand": "Seagram's",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -12983,6 +13040,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -12999,11 +13059,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 1612.0
+        "target": 490719.08000000054
     },
     "single malts / grains": {
         "brand": "Single Malts / Grains",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -13386,6 +13446,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -13402,11 +13465,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 1240.0
+        "target": 218367.0899999999
     },
     "smirnoff": {
         "brand": "Smirnoff",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -14225,6 +14288,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -14241,11 +14307,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 4029.0
+        "target": 1272525.2700000007
     },
     "smirnoff ice fmb": {
         "brand": "Smirnoff Ice FMB",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -14622,6 +14688,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -14638,11 +14707,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 498.0
+        "target": 239837.96999999997
     },
     "tanqueray": {
         "brand": "Tanqueray",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -14859,6 +14928,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -14875,11 +14947,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 1192.0
+        "target": 545015.4800000002
     },
     "the singleton": {
         "brand": "The Singleton",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -15078,6 +15150,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -15094,11 +15169,11 @@
             ]
         ],
         "table_name": "solver",
-        "target": 1301.0
+        "target": 413170.27999999997
     },
     "zacapa": {
         "brand": "Zacapa",
-        "metric": "events",
+        "metric": "costs",
         "programs": [
             {
                 "combination": {
@@ -15413,6 +15488,9 @@
         ],
         "solve_combs": [
             [
+                "brand"
+            ],
+            [
                 "brand",
                 "channel"
             ],
@@ -15429,6 +15507,6 @@
             ]
         ],
         "table_name": "solver",
-        "target": 1594.0
+        "target": 768483.3799999994
     }
 }

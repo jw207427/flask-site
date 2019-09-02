@@ -12,6 +12,7 @@ import numpy as np
 import seaborn as sns
 from mpltools import layout
 import calendar
+from textwrap import wrap
 
 mpl.rcParams['font.family'] = "Arial Rounded MT Bold"
 
@@ -68,14 +69,28 @@ def build_graph(x, y):
 
 @app.route('/graphs')
 def graphs():
-    # here we want to get the value of user (i.e. ?user=some-value)
     brand = request.args.get('brand')
     if not brand:
         return 'Missing brand'
 
+    calc_method = request.args.get('calc_method')
+    if not calc_method:
+        return 'Missing calculation method (events, costs,etc.)'
+
+    file_path = ''
+
+    if calc_method == 'events':
+        file_path = '/events_input.json'
+    elif calc_method == 'costs':
+        file_path = '/costs_input.json'
+    elif calc_method == 'reaches':
+        file_path = '/reaches_input.json'
+    else:
+        return 'Invalid calculation method'
+
     this_folder = os.getcwd()
 
-    with open(this_folder+'/input.json') as json_file:
+    with open(this_folder+file_path) as json_file:
         data = json.load(json_file)
 
     headers = dict()
@@ -94,7 +109,9 @@ def graphs():
 
     calc_combs = {'brand-channel':'Brand & Channel',
                   'channel-region': 'Channel & Region',
-                  'channel-month': 'Channel & Month'}
+                  'channel-month': 'Channel & Month',
+                  'program': 'Program'
+                  }
 
     solve = ['total_reach', 'total_cost', 'total_event']
 
@@ -119,10 +136,30 @@ def graphs():
 
             ax[0].legend(loc=2, labels=labels)
 
+        elif len(calc.split('-')) < 2:
+            labels = output[calc].unique()
+
+            labels = ['\n'.join(wrap(l, 15)) for l in labels]
+
+            if len(labels) >= 5:
+                fig, ax = plt.subplots(3, 1, figsize=(9, 9), sharex='col')
+            else:
+                fig, ax = plt.subplots(1, 3, figsize=(9, 3), sharex='col')
+
+            ind = np.arange(len(labels))
+            width = .5
+
+            x = 0
+
+            for s in solve:
+                make_bar(ind, [output[s]], width, s, labels, ax[x])
+                x += 1
+
         else:
             index = calc.split('-')
             legend_index = index[0]
             merge_index = index[0]
+
             for i in index:
                 if len(output[i].unique()) <= 2:
                     legend = output[i].unique()
@@ -131,7 +168,7 @@ def graphs():
                     labels = output[i].unique()
                     merge_index = i
 
-            if len(labels) > 5:
+            if len(labels) >= 5:
                 fig, ax = plt.subplots(3, 1, figsize=(9, 9), sharex='col')
             else:
                 fig, ax = plt.subplots(1, 3, figsize=(9, 3), sharex='col')
@@ -167,28 +204,17 @@ def graphs():
         graph_url.append('data:image/png;base64,{}'.format(base64.b64encode(img.getvalue()).decode()))
         title.append(calc_combs[calc])
         plt.close()
-    #
-    #
-    #
-    #
-    # x1 = [0,1,2,3,4]
-    # y1 = [10, 30, 40, 5, 50]
-    # x2 = [0, 1, 2, 3, 4]
-    # y2 = [10, 30, 40, 5, 50]
-    # x3 = [0, 1, 2, 3, 4]
-    # y3 = [10, 30, 40, 5, 50]
-    #
-    # graph1_url = build_graph(x1, y1)
-    # graph2_url = build_graph(x2, y2)
-    # graph3_url = build_graph(x3, y3)
 
     return render_template('graphs.html',
                            title1=title[0],
                            title2=title[1],
                            title3=title[2],
+                           title4=title[3],
                            graph1=graph_url[0],
                            graph2=graph_url[1],
-                           graph3=graph_url[2])
+                           graph3=graph_url[2],
+                           graph4=graph_url[3]
+                           )
 
 
 @app.route('/')
@@ -196,6 +222,6 @@ def root():
     return 'Test site'
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     app.debug = True
     app.run()
